@@ -3,31 +3,31 @@ use bcrypt::{hash, verify};
 
 
 
-pub fn create_hash_password(password: String) -> String {
+pub fn _create_hash_password(password: String) -> String {
 
-    let senha = password;
-    let hash = hash(senha, 10).unwrap();
+    let senha: String = password;
+    let hash: String = hash(senha, 10).unwrap();
      
     hash
 }
 
 
-pub fn velidate_hash_password(password: String, hash: String) -> bool {
+pub fn _velidate_hash_password(password: String, hash: String) -> bool {
 
-    let password = password;
-    let verify_pw = verify(outra_senha, &hash).unwrap();
+    let password: String = password;
+    let verify_pw: bool = verify(password, &hash).unwrap();
 
     if verify_pw { true }
     else { false }
 }
 
 
-pub fn verify_password(password: String, hash: String) {
+pub fn _verify_password(password: String, hash: &str) {
 
-    let hash_in_database = password;
-    let password_user = hash;
+    let hash_in_database: &str = hash;
+    let password_user: String = password;
 
-    match verify(senha_usuario, hash_armazenado) {
+    match verify(password_user, hash_in_database) {
         Ok(true) => println!("A senha está correta!"),
         Ok(false) => println!("A senha está incorreta!"),
         Err(_) => println!("Erro ao verificar a senha."),

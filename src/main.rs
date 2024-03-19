@@ -2,8 +2,10 @@
 
 mod entitys {pub mod entity_client; pub mod register_client;}
 mod functions { pub mod collector_dates; }
+mod tools { pub mod manager_password; }
 
 use crate::entitys::register_client::RegisterClient;
+use crate::tools::manager_password::{_velidate_hash_password,_verify_password,_create_hash_password};
 use crate::functions::collector_dates::colletor_info_register;
 use std::io;
 
@@ -16,9 +18,20 @@ use std::io;
 
 
 //Method Enter Account 
-fn enter_account(password:String,login:String){
+fn enter_account(){
 
+    println!("Your login:");
+    let mut login:String = String::new();
+    io::stdin().read_line(&mut login).expect("Falha ao ler a entrada"); 
 
+    println!("Your password: ");
+    let mut password:String = String::new();
+    io::stdin().read_line(&mut password).expect("Falha ao ler a entrada"); 
+
+    let hash: String = _create_hash_password(password);
+    let verify: bool = _velidate_hash_password(password,hash);
+    if verify {println!("Login efetuado com sucesso");}
+    else {println!("Senha ou login incorretos");}
 
 
 }
@@ -49,6 +62,9 @@ agency
     ",teste.id,teste.name,teste.cpf,teste.id_agent_bank,teste.password,teste.number_account);
     println!("====================================================================");
 }
+
+
+
 
 fn main() {
 
