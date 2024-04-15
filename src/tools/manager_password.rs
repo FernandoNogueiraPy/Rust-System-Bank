@@ -11,7 +11,6 @@ pub fn _create_hash_password(password: String) -> String {
     hash
 }
 
-
 pub fn _velidate_hash_password(password: String, hash: String) -> bool {
 
     let password: String = password;
@@ -20,7 +19,6 @@ pub fn _velidate_hash_password(password: String, hash: String) -> bool {
     if verify_pw { true }
     else { false }
 }
-
 
 pub fn _verify_password(password: String, hash: &str) {
 
